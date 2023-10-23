@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Template Filters Example</title>
+</head>
+<body>
+    <h2>String Filters:</h2>
+    {{ "hello world"| capfirst }}<br>
+    {{ ""|default:"No value" }}<br>
+    {{ None|default_if_none:"Default Value" }}<br>
+    {{ "Hello"|lower }}<br>
+    {{ "this is a sample text"|length }}<br>
+    {{ "this is a sample text"|title }}<br>
+    {{ "Lorem ipsum dolor sit amet..."|truncatechars:20 }}<br>
+    {{ "Lorem ipsum dolor sit amet..."|truncatewords:3 }}<br>
+    {{ "heLLo"|upper }}<br>
+    {{ "<b>Hello</b>"|striptags|length}}<br>
+
+    <h2>Number Filters:</h2>
+    {{ 5|add:3 }}<br>
+    {{ 12345.6789|floatformat:2 }}<br>
+    {{ 10|divisibleby:5 }}<br>
+    {{ 1024|filesizeformat }}<br>
+    {{ None|default_if_none:"Default Value" }}<br>
+
+    <h2>Date and Time Filters:</h2>
+    {{ some_date|date:"d-m-Y" }}<br>
+    {{ some_time|time:"H:i:s" }}<br>
+    {{ future_date|timeuntil:past_date }}<br>
+    {{ past_date|timesince }}<br>
+
+    <h2>List Filters:</h2>
+    {{ some_list|first }}<br>
+    {{ some_list|last }}<br>
+    {{ some_list|length }}<br>
+    {{ some_list|slice:":2" }}<br>
+    {{ some_list|unordered_list }}<br>
+    {# error #}
+    <!-- some_dict|first <br>-->
+    <!-- some_dict|last <br>-->
+    {{ some_dict|length }}<br>
+    <!-- some_dict|slice:":2"t <br>-->
+    {{ some_dict|unordered_list }}<br>
+
+    <h2>Miscellaneous Filters:</h2>
+    {{ True|yesno:"Yes,No" }}<br>
+    {{ None|yesno:"Approved,Pending,Rejected" }}<br>
+    {{ "<b>Hello</b>"|length_is:12 }} <br>
+    {{ "I 'm using Computer"|addslashes }} <br>
+    {{ "Hello World"|linebreaks }}<br>
+    {{ "Hell nWorld"|linebreaksbr }}<br>
+    {{ "Go to www.cbs.chula.ac.th"|urlizetrunc:10 }}<br>
+
+    <h2>Custom Filters:</h2>
+    {{ "I 'm using Computer"|capitalize_words }}<br>
+    
+</body>
+</html>
