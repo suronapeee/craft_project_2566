@@ -1,0 +1,29 @@
+<!-- templates/post_new1.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>New Post 1</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <!-- {{ form.as_p}}-->
+    <table>
+    {{ form.as_table }}
+    </table>
+    <!-- {{ form.as_ul}}-->
+   <input type="submit" value="save">
+  </form>
+
+  {% if form.is_valid %}
+  {% if form.cleaned_data.title %}
+  <h4>Posted data:</h4><br>
+  {{ form.cleaned_data.title }} <br>
+  {% endif %}
+  {% if form.cleaned_data.author %}
+  {{ form.author.label }}:{{ form.cleaned_data.author }} <br>
+  {% endif %}
+  {% if form.cleaned_data.body %}
+  {{ form.body.label }}:{{ form.cleaned_data.body }}
+  {% endif %}
+  {% endif %}
+{% endblock %}
