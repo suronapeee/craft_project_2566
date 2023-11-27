@@ -9,7 +9,6 @@ from .forms import CommentForm
 from .models import Article
 
 import random # new
-from django.http import HttpResponseRedirect # new
 from django.contrib import messages # new
 
 class CommentGet(DetailView): 
@@ -61,8 +60,7 @@ class CommentPost(SingleObjectMixin, FormView):
     def form_invalid(self, form): # new
         # Captcha is incorrect
         messages.error(self.request, 'Invalid captcha. Please try again.')
-        # Clear the captcha from the session
-        captcha_number = random.randint(1000, 9999) # new
+        captcha_number = random.randint(1000, 9999) 
         self.request.session['captcha'] = captcha_number
         return super().form_invalid(form) 
 
